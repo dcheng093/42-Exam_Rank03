@@ -68,35 +68,44 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     return []
 
 
+def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]
+    merge = list1 + list2; merge.sort(reverse=True)
+    return merge
+
 print("alternate case\n")
-print(alternate_case("hello world"))             # "HeLlO wOrLd"
-print(alternate_case("42madrid"))                # "42MaDrId"
-print(alternate_case("python3.9 rocks!"))        # "PyThOn3.9 RoCkS!"
-print(alternate_case("a!b?c"))                   # "A!b?C"
+print(alternate_case("hello world"))              # "HeLlO wOrLd"
+print(alternate_case("42madrid"))                 # "42MaDrId"
+print(alternate_case("python3.9 rocks!"))         # "PyThOn3.9 RoCkS!"
+print(alternate_case("a!b?c"))                    # "A!b?C"
 print("\natoi\n")
-print(atoi("42"))                                # 42
-print(atoi("  -42ab"))                           # -42
-print(atoi("+123"))                              # 123
-print(atoi("abc"))                               # 0
+print(atoi("42"))                                 # 42
+print(atoi("  -42ab"))                            # -42
+print(atoi("+123"))                               # 123
+print(atoi("abc"))                                # 0
 print("\nbrackets\n")
-print(brackets("()"))                            # True
-print(brackets("([{}])"))                        # True
-print(brackets("(]"))                            # False
-print(brackets("([)"))                           # False
-print(brackets("a(b[c]d)"))                      # True
-print(brackets("[{adaudna}]"))                   # True
-print(brackets("[{adaudna}])"))                  # False
-print(brackets("abc{[123(xyz)]}"))               # True
+print(brackets("()"))                             # True
+print(brackets("([{}])"))                         # True
+print(brackets("(]"))                             # False
+print(brackets("([)"))                            # False
+print(brackets("a(b[c]d)"))                       # True
+print(brackets("[{adaudna}]"))                    # True
+print(brackets("[{adaudna}])"))                   # False
+print(brackets("abc{[123(xyz)]}"))                # True
 print("\ncapitalize_words\n")
-print(capitalize_words("hello world"))           # "Hello World"
-print(capitalize_words("42 madrid exam"))        # "42 Madrid Exam"
-print(capitalize_words("  multiple   spaces "))  # "  Multiple   Spaces "
-print(capitalize_words("mixed CASE letters"))    # "Mixed Case Letters"
+print(capitalize_words("hello world"))            # "Hello World"
+print(capitalize_words("42 madrid exam"))         # "42 Madrid Exam"
+print(capitalize_words("  multiple   spaces "))   # "  Multiple   Spaces "
+print(capitalize_words("mixed CASE letters"))     # "Mixed Case Letters"
 print("\nconvert_base\n")
-convert_base("ff", 16, 2)                        # 11111111
-convert_base("10", 2, 10)                        # 2
-convert_base("z", 36, 10)                        # 35
-convert_base("1g", 16, 10)                       # ERROR
+convert_base("ff", 16, 2)                         # 11111111
+convert_base("10", 2, 10)                         # 2
+convert_base("z", 36, 10)                         # 35
+convert_base("1g", 16, 10)                        # ERROR
 print("\ntwoSum\n")
-print(twoSum([2, 7, 11, 15], 9))                 # [0, 1]
-print(twoSum([5, 5], 10))                        # [0, 1]
+print(twoSum([2, 7, 11, 15], 9))                  # [0, 1]
+print(twoSum([5, 5], 10))                         # [0, 1]
+print("\nmerge_and_sort_desc\n")
+print(merge_and_sort_desc([1, 3, 5], [2, 4, 6]))  # [6, 5, 4, 3, 2, 1]
+print(merge_and_sort_desc([10, 2], [3, 7, 2]))    # [10, 7, 3, 2, 2]
+print(merge_and_sort_desc([], [1, 2, 3]))         # [3, 2, 1]
+print(merge_and_sort_desc([], []))                # []
