@@ -1,0 +1,1 @@
+my solutions to the 42 rank 02 exam stuff
