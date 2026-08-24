@@ -63,7 +63,7 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     for i, num in enumerate(nums):
         needed = target - num
         if needed in seen:
-            return (seen[needed], i)
+            return [seen[needed], i]
         seen[num] = i
     return []
 
