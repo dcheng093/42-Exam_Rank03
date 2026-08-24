@@ -57,6 +57,17 @@ def convert_base(number: str, from_base: int, to_base: int) -> None:
         digit //= to_base
     print(res)
 
+
+def twoSum(nums: list[int], target: int) -> list[int]:
+    seen = {}
+    for i, num in enumerate(nums):
+        needed = target - num
+        if needed in seen:
+            return (seen[needed], i)
+        seen[num] = i
+    return []
+
+
 print("alternate case\n")
 print(alternate_case("hello world"))             # "HeLlO wOrLd"
 print(alternate_case("42madrid"))                # "42MaDrId"
@@ -86,3 +97,6 @@ convert_base("ff", 16, 2)                        # 11111111
 convert_base("10", 2, 10)                        # 2
 convert_base("z", 36, 10)                        # 35
 convert_base("1g", 16, 10)                       # ERROR
+print("\ntwoSum\n")
+print(twoSum([2, 7, 11, 15], 9))                 # [0, 1]
+print(twoSum([5, 5], 10))                        # [0, 1]
