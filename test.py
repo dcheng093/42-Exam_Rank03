@@ -68,9 +68,10 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     return []
 
 
-def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]
+def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]:
     merge = list1 + list2; merge.sort(reverse=True)
     return merge
+
 
 print("alternate case\n")
 print(alternate_case("hello world"))              # "HeLlO wOrLd"
