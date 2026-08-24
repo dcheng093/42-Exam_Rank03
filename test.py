@@ -68,9 +68,14 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     return []
 
 
+def valid_anagram(s: str, t: str) -> bool:
+    return sorted(s) == sorted(t)
+
+
 def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]
     merge = list1 + list2; merge.sort(reverse=True)
     return merge
+
 
 print("alternate case\n")
 print(alternate_case("hello world"))              # "HeLlO wOrLd"
@@ -109,3 +114,9 @@ print(merge_and_sort_desc([1, 3, 5], [2, 4, 6]))  # [6, 5, 4, 3, 2, 1]
 print(merge_and_sort_desc([10, 2], [3, 7, 2]))    # [10, 7, 3, 2, 2]
 print(merge_and_sort_desc([], [1, 2, 3]))         # [3, 2, 1]
 print(merge_and_sort_desc([], []))                # []
+print("\nvalid_anagram\n")
+print(valid_anagram("racecar", "carrace"))        # True
+print(valid_anagram("jar", "jam"))                # False
+print(valid_anagram("listen", "silent"))          # True
+print(valid_anagram("aabbcc", "abcabc"))          # True
+print(valid_anagram("abc", "ab"))                 # False
