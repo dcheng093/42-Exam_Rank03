@@ -39,6 +39,24 @@ def capitalize_words(s: str) -> str:
     return " ".join(capitalized_words)
 
 
+def convert_base(number: str, from_base: int, to_base: int) -> None:
+    digits, res = "0123456789ACBDEFGHIJKLMNOPQRSTUVWXYZ", ""
+    try:
+        if not (2 <= from_base <= 36 and 2 <= to_base <= 36):
+            print("ERROR")
+            return
+        digit = int(number, from_base)
+    except ValueError:
+        print("ERROR")
+        return
+    if digit == 0:
+        print("0")
+        return
+    while digit > 0:
+        res = digits[digit % to_base] + res
+        digit //= to_base
+    print(res)
+
 print("alternate case\n")
 print(alternate_case("hello world"))             # "HeLlO wOrLd"
 print(alternate_case("42madrid"))                # "42MaDrId"
@@ -63,3 +81,8 @@ print(capitalize_words("hello world"))           # "Hello World"
 print(capitalize_words("42 madrid exam"))        # "42 Madrid Exam"
 print(capitalize_words("  multiple   spaces "))  # "  Multiple   Spaces "
 print(capitalize_words("mixed CASE letters"))    # "Mixed Case Letters"
+print("\nconvert_base\n")
+convert_base("ff", 16, 2)                        # 11111111
+convert_base("10", 2, 10)                        # 2
+convert_base("z", 36, 10)                        # 35
+convert_base("1g", 16, 10)                       # ERROR
