@@ -59,7 +59,7 @@ def convert_base(number: str, from_base: int, to_base: int) -> None:
 
 
 def twoSum(nums: list[int], target: int) -> list[int]:
-    seen = {}
+    seen: dict = {}
     for i, num in enumerate(nums):
         needed = target - num
         if needed in seen:
