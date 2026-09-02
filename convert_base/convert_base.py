@@ -1,5 +1,5 @@
 def convert_base(number: str, from_base: int, to_base: int) -> None:
-    digits, res = "0123456789ACBDEFGHIJKLMNOPQRSTUVWXYZ", ""
+    digits, res = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", ""
     try:
         if not (2 <= from_base <= 36 and 2 <= to_base <= 36):
             print("ERROR")
