@@ -14,7 +14,9 @@ def convert_base(number: str, from_base: int, to_base: int) -> None:
     while digit > 0:
         res = res + digits[digit % to_base]
         digit //= to_base
-    print(res)
+    print(res[::-1])  # slicing, sequeunce[start:stop:step]
+                      # leave first two empty = use the whole thing
+                      # -1 go back 1 step at a time
 
 
 convert_base("ff", 16, 2)           # 11111111
