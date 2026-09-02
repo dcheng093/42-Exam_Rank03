@@ -12,7 +12,7 @@ def convert_base(number: str, from_base: int, to_base: int) -> None:
         print("0")
         return
     while digit > 0:
-        res = digits[digit % to_base] + res
+        res = res + digits[digit % to_base]
         digit //= to_base
     print(res)
 
