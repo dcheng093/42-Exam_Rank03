@@ -14,19 +14,19 @@ def alternate_case(s: str) -> str:
 
 def atoi(s: str) -> int:
     s, i, res, sign = s.strip(), 0, 0, 1
-    if i < len(s) and s[i] in '-+':
-        sign = 1 if s[i] == '+' else -1; i += 1
+    if i < len(s) and s[i] in "+-":
+        sign = -1 if s[i] == '-' else 1; i += 1
     while i < len(s) and s[i].isdigit():
         res = res * 10 + int(s[i]); i += 1
-    return (res * sign)
+    return sign * res
 
 
 def brackets(s: str) -> bool:
     stack, pairs = [], {'}': '{', ']': '[', ')': '('}
     for char in s:
-        if char in '([{':
+        if char in "{[(":
             stack.append(char)
-        elif char in '}])':
+        elif char in "}])":
             if not stack or pairs[char] != stack[-1]:
                 return False
             stack.pop()
@@ -43,19 +43,15 @@ def convert_base(number: str, from_base: int, to_base: int) -> None:
     digits, res = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", ""
     try:
         if not (2 <= from_base <= 36 and 2 <= to_base <= 36):
-            print("ERROR")
-            return
+            print("ERROR"); return
         digit = int(number, from_base)
     except ValueError:
-        print("ERROR")
-        return
+        print("ERROR"); return
     if digit == 0:
-        print("0")
-        return
+        print("ERROR"); return
     while digit > 0:
-        res = digits[digit % to_base] + res
-        digit //= to_base
-    print(res)
+        res = res + digits[digit % to_base]; digit //= to_base
+    print(res[::-1])
 
 
 def twoSum(nums: list[int], target: int) -> list[int]:
@@ -68,13 +64,14 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     return []
 
 
+def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]:
+    merged = list1 + list2
+    merged.sort(reverse=True)
+    return merged
+
+
 def valid_anagram(s: str, t: str) -> bool:
     return sorted(s) == sorted(t)
-
-
-def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]:
-    merge = list1 + list2; merge.sort(reverse=True)
-    return merge
 
 
 print("alternate case\n")
