@@ -14,17 +14,17 @@ def alternate_case(s: str) -> str:
 
 def atoi(s: str) -> int:
     s, i, res, sign = s.strip(), 0, 0, 1
-    if i < len(s) and s[i] in "+-":
+    if i < len(s) and s[i] in "-+":
         sign = -1 if s[i] == '-' else 1; i += 1
     while i < len(s) and s[i].isdigit():
         res = res * 10 + int(s[i]); i += 1
-    return sign * res
+    return res * sign
 
 
 def brackets(s: str) -> bool:
-    stack, pairs = [], {'}': '{', ']': '[', ')': '('}
+    stack, pairs = [], {"}": "{", "]": "[", ")": "("}
     for char in s:
-        if char in "{[(":
+        if char in "[{(":
             stack.append(char)
         elif char in "}])":
             if not stack or pairs[char] != stack[-1]:
@@ -48,10 +48,19 @@ def convert_base(number: str, from_base: int, to_base: int) -> None:
     except ValueError:
         print("ERROR"); return
     if digit == 0:
-        print("ERROR"); return
+        print("0"); return
     while digit > 0:
         res = res + digits[digit % to_base]; digit //= to_base
     print(res[::-1])
+
+
+def custom_sort(arr: list) -> list:
+    res = arr[:]
+    for i in range(len(res)):
+        for j in range(0, len(res) - i - 1):
+            if res[j] > res[j + 1]:
+                res[j], res[j + 1] = res[j + 1], res[j]
+    return res
 
 
 def twoSum(nums: list[int], target: int) -> list[int]:
@@ -65,9 +74,7 @@ def twoSum(nums: list[int], target: int) -> list[int]:
 
 
 def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]:
-    merged = list1 + list2
-    merged.sort(reverse=True)
-    return merged
+    merged = list1 + list2; merged.sort(reverse=True); return merged
 
 
 def valid_anagram(s: str, t: str) -> bool:
@@ -103,14 +110,17 @@ convert_base("ff", 16, 2)                         # 11111111
 convert_base("10", 2, 10)                         # 2
 convert_base("z", 36, 10)                         # 35
 convert_base("1g", 16, 10)                        # ERROR
-print("\ntwoSum\n")
-print(twoSum([2, 7, 11, 15], 9))                  # [0, 1]
-print(twoSum([5, 5], 10))                         # [0, 1]
+print("\ncustomSortString\n")
+print(custom_sort([3, 1, 2]))                     # [1, 2, 3]
+print(custom_sort([5, -1, 0]))                    # [-1, 0, 5])
 print("\nmerge_and_sort_desc\n")
 print(merge_and_sort_desc([1, 3, 5], [2, 4, 6]))  # [6, 5, 4, 3, 2, 1]
 print(merge_and_sort_desc([10, 2], [3, 7, 2]))    # [10, 7, 3, 2, 2]
 print(merge_and_sort_desc([], [1, 2, 3]))         # [3, 2, 1]
 print(merge_and_sort_desc([], []))                # []
+print("\ntwoSum\n")
+print(twoSum([2, 7, 11, 15], 9))                  # [0, 1]
+print(twoSum([5, 5], 10))                         # [0, 1]
 print("\nvalid_anagram\n")
 print(valid_anagram("racecar", "carrace"))        # True
 print(valid_anagram("jar", "jam"))                # False
