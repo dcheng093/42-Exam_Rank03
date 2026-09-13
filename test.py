@@ -63,6 +63,35 @@ def custom_sort(arr: list) -> list:
     return res
 
 
+def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]:
+    merged = list1 + list2; merged.sort(reverse=True); return merged
+
+
+def mirror_matrix(matrix: list[list[int]]) -> list[list[int]]:
+    return [row[::-1] for row in matrix]
+
+
+def mirror_matrix_vertical(matrix: list) -> list:
+    return matrix[::-1]
+
+
+def py_echo_validator(s: str) -> bool:
+    filtered = "".join(word.lower() for word in s if word.isalnum())
+    return filtered[::-1] == filtered
+
+
+def pattern_tracker(text: str) -> int:
+    count = 0
+    for i in range(len(text) - 1):
+        if (text[i].isdigit() and
+                text[i + 1].isdigit() and
+                int(text[i + 1]) == int(text[i]) + 1):
+            count += 1
+    return count
+
+
+
+
 def twoSum(nums: list[int], target: int) -> list[int]:
     seen: dict = {}
     for i, num in enumerate(nums):
@@ -71,10 +100,6 @@ def twoSum(nums: list[int], target: int) -> list[int]:
             return [seen[needed], i]
         seen[num] = i
     return []
-
-
-def merge_and_sort_desc(list1: list[int], list2: list[int]) -> list[int]:
-    merged = list1 + list2; merged.sort(reverse=True); return merged
 
 
 def valid_anagram(s: str, t: str) -> bool:
@@ -118,6 +143,50 @@ print(merge_and_sort_desc([1, 3, 5], [2, 4, 6]))  # [6, 5, 4, 3, 2, 1]
 print(merge_and_sort_desc([10, 2], [3, 7, 2]))    # [10, 7, 3, 2, 2]
 print(merge_and_sort_desc([], [1, 2, 3]))         # [3, 2, 1]
 print(merge_and_sort_desc([], []))                # []
+print("\nmirror_matrix\n")
+res = mirror_matrix([
+                               [1, 2, 3],
+                               [4, 5, 6],
+                               [7, 8, 9]
+                             ])
+print("[")
+for i, row in enumerate(res):
+    comma = "," if i < len(res) - 1 else ""
+    print(f"  {row}{comma}")
+print("]")
+print("\nmirror_matrix_vertical\n")
+res = mirror_matrix_vertical([
+                               [1, 2, 3],
+                               [4, 5, 6],
+                               [7, 8, 9]
+                             ])
+print("[")
+for i, row in enumerate(res):
+    comma = "," if i < len(res) - 1 else ""
+    print(f"  {row}{comma}")
+print("]")
+print("\npy_echo_validator\n")
+print(py_echo_validator("Was it a car or a cat I saw?"))    # True
+print(py_echo_validator("tab a cat"))                       # False
+print(py_echo_validator("A man, a plan, a canal: Panama"))  # True
+print(py_echo_validator("No lemon, no melon"))              # True
+print("\npy_pattern_tracker\n")
+print(pattern_tracker("12a34"))   # 2
+print(pattern_tracker("1234"))    # 3
+print(pattern_tracker("a1b2c3"))  # 0
+print(pattern_tracker("98"))      # 0
+print("\nsorted\n")
+# sort strings by length
+words = ["banana", "kiwi", "fig"]
+result = sorted(words, key=lambda x: len(x))
+print(result)
+# sort tuples by a specific field
+people = [("Ana", 8.5), ("Luis", 6.0)]
+result = sorted(people, key=lambda x: x[1], reverse=True)
+print(result)
+# sort by multiple criteria
+people = [("Ana", 20), ("Luis", 20), ("Marta", 18)]
+result = sorted(people, key=lambda x: (x[1], x[0]))
 print("\ntwoSum\n")
 print(twoSum([2, 7, 11, 15], 9))                  # [0, 1]
 print(twoSum([5, 5], 10))                         # [0, 1]
